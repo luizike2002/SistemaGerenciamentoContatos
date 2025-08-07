@@ -1,0 +1,41 @@
+﻿@model ContatoModel
+
+@{
+	ViewData["Title"] = "Editor de Contatos";
+}
+<div class="text-center">
+	<h1 class="display-4">Editar Contato</h1>
+	<br />
+	<br />
+	<form asp-controller="Contato" asp-action="Alterar" method="post">
+		<input type="hidden" asp-for="ContatoId"/>
+		<div class="container g-3">
+			<div class="col-sm-12">
+				<div class="text-start"><h5><label class="text-start" asp-for="Nome"></label></h5></div>
+				<br />
+				<input type="text" asp-for="Nome" class="form-control" placeholder="Nome" aria-label="Nome">
+				@Html.ValidationMessageFor(x => x.Nome)
+			</div>
+			<div class="col-sm-12">
+				<div class="text-start"><h5><label class="text-start" asp-for="Email"></label></h5></div>
+				<br />
+				<input type="text" asp-for="Email" class="form-control" placeholder="Email" aria-label="Email">
+				@Html.ValidationMessageFor(x => x.Email)
+			</div>
+			<div class="col-sm-12">
+				<div class="text-start"><h5><label class="text-start" asp-for="Telefone"></label></h5></div>
+				<br />
+				<input type="number" asp-for="Telefone" class="form-control" placeholder="Telefone" aria-label="Telefone">
+				@Html.ValidationMessageFor(x => x.Telefone)
+			</div>
+			<br />
+			<div class="row g-2">
+				<td>
+					<button type="submit" class="btn btn-success">Concluir Edição</button>
+					<a class="btn btn-primary" asp-controller="Contato" asp-action="Index">Voltar</a>
+				</td>
+			</div>
+		</div>
+	</form>
+</div>
+

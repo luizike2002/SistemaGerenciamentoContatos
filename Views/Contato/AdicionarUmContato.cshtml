@@ -1,0 +1,50 @@
+﻿@model ContatoModel
+@{
+	ViewData["Title"] = "Cadastro de Contatos";
+}
+<div class="text-center">
+	<h1 class="display-4">Cadastrar Contato</h1>
+	<br />
+	@if (TempData["MensagemSucesso"] != null)
+	{
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="btn btn-sm close-alert" arial-label="Close">X</button>
+			@TempData["MensagemSucesso"]
+		</div>
+	}
+	@if (TempData["MensagemErro"] != null)
+	{
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="btn btn-sm close-alert" arial-label="Close">X</button>
+			@TempData["MensagemErro"]
+		</div>
+	}
+	<br />
+	<form asp-controller="Contato" asp-action="Criar" method="post">
+		<div class="container g-3">
+			<div class="col-sm-12">
+				<div class="text-start"><h5><label class="text-start" asp-for="Nome"></label></h5></div>
+				<input type="text" asp-for="Nome" class="form-control" placeholder="Nome Completo" aria-label="Nome Completo">
+				@Html.ValidationMessageFor(x => x.Nome)
+			</div>
+			<div class="col-sm-12">
+				<div class="text-start"><h5><label class="text-start" asp-for="Email"></label></h5></div>
+				<input type="text" asp-for="Email" class="form-control" placeholder="Email" aria-label="Email">
+				@Html.ValidationMessageFor(x => x.Email)
+			</div>
+			<div class="col-sm-12">
+				<div class="text-start"><h5><label class="text-start" asp-for="Telefone"></label></h5></div>
+				<input type="tel" asp-for="Telefone" class="form-control" placeholder="Telefone" aria-label="Telefone">
+				@Html.ValidationMessageFor(x => x.Telefone)
+			</div>
+			<br />
+			<div class="row g-2">
+				<td>
+					<button type="submit" class="btn btn-success">Adicionar</button>
+					<a class="btn btn-primary" asp-controller="Contato" asp-action="Index">Voltar</a>
+				</td>
+			</div>
+		</div>
+	</form>
+</div>
+
